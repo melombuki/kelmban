@@ -1,0 +1,296 @@
+var _no$no$Main$navLiAStyle = {
+	ctor: '::',
+	_0: {ctor: '_Tuple2', _0: 'display', _1: 'block'},
+	_1: {
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'color', _1: 'white'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'text-align', _1: 'center'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'padding', _1: '14px 16px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'text-decoration', _1: 'none'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	}
+};
+var _no$no$Main$navLiStyle = {
+	ctor: '::',
+	_0: {ctor: '_Tuple2', _0: 'float', _1: 'left'},
+	_1: {ctor: '[]'}
+};
+var _no$no$Main$navUlStyle = {
+	ctor: '::',
+	_0: {ctor: '_Tuple2', _0: 'list-style-type', _1: 'none'},
+	_1: {
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'margin', _1: '0'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'padding', _1: '0'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'overflow', _1: 'hidden'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'background-color', _1: '#333'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	}
+};
+var _no$no$Main$viewLocation = function (location) {
+	return A2(
+		_elm_lang$html$Html$li,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(location.hash),
+			_1: {ctor: '[]'}
+		});
+};
+var _no$no$Main$viewLink = function (name) {
+	return A2(
+		_elm_lang$html$Html$li,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$style(_no$no$Main$navLiStyle),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$a,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$style(_no$no$Main$navLiAStyle),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$href(
+							A2(_elm_lang$core$Basics_ops['++'], '#', name)),
+						_1: {ctor: '[]'}
+					}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(name),
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		});
+};
+var _no$no$Main$tabs = {
+	ctor: '::',
+	_0: 'dashboard',
+	_1: {
+		ctor: '::',
+		_0: 'navbar',
+		_1: {
+			ctor: '::',
+			_0: 'create-task',
+			_1: {ctor: '[]'}
+		}
+	}
+};
+var _no$no$Main$AppModel = F3(
+	function (a, b, c) {
+		return {navbarModel: a, content: b, history: c};
+	});
+var _no$no$Main$DashboardModel = function (a) {
+	return {ctor: 'DashboardModel', _0: a};
+};
+var _no$no$Main$initialModel = {
+	navbarModel: _no$no$NavBar$init(_no$no$Main$tabs),
+	content: _no$no$Main$DashboardModel(_no$no$Dashboard$initialModel),
+	history: {ctor: '[]'}
+};
+var _no$no$Main$init = function (location) {
+	return {ctor: '_Tuple2', _0: _no$no$Main$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
+};
+var _no$no$Main$NavbarModel = function (a) {
+	return {ctor: 'NavbarModel', _0: a};
+};
+var _no$no$Main$UrlChange = function (a) {
+	return {ctor: 'UrlChange', _0: a};
+};
+var _no$no$Main$NavbarMsg = function (a) {
+	return {ctor: 'NavbarMsg', _0: a};
+};
+var _no$no$Main$DashboardMsg = function (a) {
+	return {ctor: 'DashboardMsg', _0: a};
+};
+var _no$no$Main$content = function (model) {
+	var _p0 = model;
+	if (_p0.ctor === 'NavbarModel') {
+		return A2(
+			_elm_lang$html$Html$map,
+			_no$no$Main$NavbarMsg,
+			_no$no$NavBar$view(_p0._0));
+	} else {
+		return A2(
+			_elm_lang$html$Html$map,
+			_no$no$Main$DashboardMsg,
+			_no$no$Dashboard$view(_p0._0));
+	}
+};
+var _no$no$Main$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$ul,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$style(_no$no$Main$navUlStyle),
+							_1: {ctor: '[]'}
+						},
+						A2(_elm_lang$core$List$map, _no$no$Main$viewLink, model.navbarModel.tabs)),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$h1,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text('History'),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$ul,
+								{ctor: '[]'},
+								A2(_elm_lang$core$List$map, _no$no$Main$viewLocation, model.history)),
+							_1: {ctor: '[]'}
+						}
+					}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _no$no$Main$content(model.content),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _no$no$Main$update = F2(
+	function (message, model) {
+		var currentHash = function () {
+			var _p1 = _elm_lang$core$List$head(model.history);
+			if (_p1.ctor === 'Just') {
+				return _p1._0.hash;
+			} else {
+				return '';
+			}
+		}();
+		var content = model.content;
+		var _p2 = {ctor: '_Tuple2', _0: message, _1: content};
+		_v2_3:
+		do {
+			switch (_p2._0.ctor) {
+				case 'UrlChange':
+					var _p4 = _p2._0._0;
+					var _p3 = _p4.hash;
+					switch (_p3) {
+						case '#dashboard':
+							return _elm_lang$core$Native_Utils.eq(currentHash, '#dashboard') ? {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none} : {
+								ctor: '_Tuple2',
+								_0: _elm_lang$core$Native_Utils.update(
+									model,
+									{
+										history: {ctor: '::', _0: _p4, _1: model.history},
+										content: _no$no$Main$DashboardModel(_no$no$Dashboard$initialModel)
+									}),
+								_1: _elm_lang$core$Platform_Cmd$none
+							};
+						case '#navbar':
+							return _elm_lang$core$Native_Utils.eq(currentHash, '#navbar') ? {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none} : {
+								ctor: '_Tuple2',
+								_0: _elm_lang$core$Native_Utils.update(
+									model,
+									{
+										history: {ctor: '::', _0: _p4, _1: model.history},
+										content: _no$no$Main$NavbarModel(
+											_no$no$NavBar$init(_no$no$Main$tabs))
+									}),
+								_1: _elm_lang$core$Platform_Cmd$none
+							};
+						default:
+							return _elm_lang$core$Native_Utils.eq(currentHash, '#navbar') ? {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none} : {
+								ctor: '_Tuple2',
+								_0: _elm_lang$core$Native_Utils.update(
+									model,
+									{
+										history: {ctor: '::', _0: _p4, _1: model.history}
+									}),
+								_1: _elm_lang$core$Platform_Cmd$none
+							};
+					}
+				case 'DashboardMsg':
+					if (_p2._1.ctor === 'DashboardModel') {
+						var _p5 = A2(_no$no$Dashboard$update, _p2._0._0, _p2._1._0);
+						var updatedDashboardModel = _p5._0;
+						var dashboardCmd = _p5._1;
+						return {
+							ctor: '_Tuple2',
+							_0: _elm_lang$core$Native_Utils.update(
+								model,
+								{
+									content: _no$no$Main$DashboardModel(updatedDashboardModel)
+								}),
+							_1: A2(_elm_lang$core$Platform_Cmd$map, _no$no$Main$DashboardMsg, dashboardCmd)
+						};
+					} else {
+						break _v2_3;
+					}
+				default:
+					if (_p2._1.ctor === 'NavbarModel') {
+						var _p6 = A2(_no$no$NavBar$update, _p2._0._0, _p2._1._0);
+						var updatedNavbarModel = _p6._0;
+						var navbarCmd = _p6._1;
+						return {
+							ctor: '_Tuple2',
+							_0: _elm_lang$core$Native_Utils.update(
+								model,
+								{
+									content: _no$no$Main$NavbarModel(updatedNavbarModel)
+								}),
+							_1: A2(_elm_lang$core$Platform_Cmd$map, _no$no$Main$NavbarMsg, navbarCmd)
+						};
+					} else {
+						break _v2_3;
+					}
+			}
+		} while(false);
+		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+	});
+var _no$no$Main$main = A2(
+	_elm_lang$navigation$Navigation$program,
+	_no$no$Main$UrlChange,
+	{
+		init: _no$no$Main$init,
+		view: _no$no$Main$view,
+		update: _no$no$Main$update,
+		subscriptions: function (_p7) {
+			return _elm_lang$core$Platform_Sub$none;
+		}
+	})();

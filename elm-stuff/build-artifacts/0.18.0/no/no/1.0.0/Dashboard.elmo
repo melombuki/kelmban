@@ -1,0 +1,75 @@
+var _no$no$Dashboard$update = F2(
+	function (message, model) {
+		var _p0 = message;
+		if (_p0.ctor === 'Increase') {
+			return {
+				ctor: '_Tuple2',
+				_0: _elm_lang$core$Native_Utils.update(
+					model,
+					{count: model.count + 1}),
+				_1: _elm_lang$core$Platform_Cmd$none
+			};
+		} else {
+			return {
+				ctor: '_Tuple2',
+				_0: _elm_lang$core$Native_Utils.update(
+					model,
+					{count: model.count - 1}),
+				_1: _elm_lang$core$Platform_Cmd$none
+			};
+		}
+	});
+var _no$no$Dashboard$initialModel = {count: 0};
+var _no$no$Dashboard$Model = function (a) {
+	return {count: a};
+};
+var _no$no$Dashboard$Decrease = {ctor: 'Decrease'};
+var _no$no$Dashboard$Increase = {ctor: 'Increase'};
+var _no$no$Dashboard$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$button,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Events$onClick(_no$no$Dashboard$Increase),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('Increase'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(
+							_elm_lang$core$Basics$toString(model.count)),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$button,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Events$onClick(_no$no$Dashboard$Decrease),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('Decrease'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
+			}
+		});
+};

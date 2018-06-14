@@ -1,0 +1,35 @@
+var _no$no$NavBar$navBarTab = function (tab) {
+	return A2(
+		_elm_lang$html$Html$li,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(tab),
+			_1: {ctor: '[]'}
+		});
+};
+var _no$no$NavBar$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$ul,
+				{ctor: '[]'},
+				A2(_elm_lang$core$List$map, _no$no$NavBar$navBarTab, model.tabs)),
+			_1: {ctor: '[]'}
+		});
+};
+var _no$no$NavBar$update = F2(
+	function (message, model) {
+		var _p0 = message;
+		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+	});
+var _no$no$NavBar$init = function (tabs) {
+	return {tabs: tabs};
+};
+var _no$no$NavBar$Model = function (a) {
+	return {tabs: a};
+};
+var _no$no$NavBar$None = {ctor: 'None'};
